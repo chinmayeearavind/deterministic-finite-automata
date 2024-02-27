@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Validation</title>
+  
+      <style>
+        #diagram-container {
+            margin-top: 20px;
+        }
+
+        #image-container {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+
+<!-- Include image from computer -->
+<div id="image-container">
+    <img src="00or 11.jpg" alt="DFA Diagram Image">
+</div>
+   
+</head>
+<body>
+
+<h1>DFA Diagram for Strings ending with "00" or "11"</h1>
+
+<label for="inputString">Enter a string:</label>
+<input type="text" id="inputString" placeholder="Enter a string">
+
+<button onclick="validateString()">Validate</button>
+
+<p id="result"></p>
+
+<script>
+    function validateString() {
+        // Get the input string
+        var inputString = document.getElementById('inputString').value;
+
+        // Define the regular expression to check for '00' or '11' at the end
+        var regex = /(00|11)$/;
+
+        // Test the input string against the regex
+        var isValid = regex.test(inputString);
+
+        // Display the result
+        var resultElement = document.getElementById('result');
+        resultElement.textContent = isValid ? 'Valid string' : 'Invalid string';
+    }
+</script>
+
+</body>
+</html>

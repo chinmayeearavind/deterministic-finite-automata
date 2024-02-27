@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFA Diagram</title>
+    <!-- Include mermaid library from CDN -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Define the DFA diagram using mermaid syntax
+            const dfaDefinition = `
+                graph TD
+                    A[Start] --> B[Accepted]
+                    B --> C[Rejected]
+                    C --> C
+            `;
+
+            // Set up mermaid with the container and diagram definition
+            mermaid.initialize({ startOnLoad: true });
+            mermaid.mermaidAPI.render('diagram-container', dfaDefinition, (svgCode) => {
+                document.getElementById('diagram-container').innerHTML = svgCode;
+            });
+        });
+    </script>
+<style>
+        #diagram-container {
+            margin-bottom: 20px;
+        }
+
+        #image-container {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px 0;
+        }
+    </style>
+
+
+
+
+<!-- Include image from computer -->
+<div id="image-container">
+    <img src="aa.png" alt="DFA Diagram Image">
+</div>
+
+    <script>
+        // Function to check if a string is accepted or rejected
+        function checkString(inputString) {
+            return inputString.startsWith('aa');
+        }
+
+        // Function to handle form submission
+        function handleSubmit() {
+            const inputString = document.getElementById('input-string').value;
+            const resultElement = document.getElementById('result');
+
+            if (checkString(inputString)) {
+                resultElement.textContent = 'String Accepted';
+            } else {
+                resultElement.textContent = 'String Rejected';
+            }
+        }
+    </script>
+
+    <style>
+        #diagram-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>DFA Diagram for Strings starting with "aa"</h1>
+
+<div id="diagram-container"></div>
+
+<h2>Test String:</h2>
+<form onsubmit="event.preventDefault(); handleSubmit();">
+    <input type="text" id="input-string" placeholder="Enter a string">
+    <button type="submit">Check</button>
+</form>
+
+<p id="result"></p>
+
+</body>
+</html>

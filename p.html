@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #inputField {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style> <style>
+        #diagram-container {
+            margin-top: 20px;
+        }
+
+        #image-container {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+
+<!-- Include image from computer -->
+<div id="image-container">
+    <img src="p.png" alt="DFA Diagram Image">
+</div>
+   
+  <title>Palindrome Checker</title>
+</head>
+<body>
+  <h2>Palindrome Checker</h2>
+  <label for="inputField">Enter a string (0's and 1's only): </label>
+  <input type="text" id="inputField" maxlength="50" oninput="checkPalindrome()">
+  <div id="result"></div>
+
+  <script>
+    function checkPalindrome() {
+      const inputField = document.getElementById('inputField');
+      const resultDiv = document.getElementById('result');
+      const inputString = inputField.value.trim();
+
+      // Check if the input is empty
+      if (inputString === '') {
+        resultDiv.textContent = '';
+        return;
+      }
+
+      // Reverse the input string
+      const reversedString = inputString.split('').reverse().join('');
+
+      // Check if the reversed string is equal to the original string
+      if (inputString === reversedString) {
+        resultDiv.textContent = 'Palindrome: Accepted';
+      } else {
+        resultDiv.textContent = 'Not a palindrome: Rejected';
+      }
+    }
+  </script>
+</body>
+</html>
